@@ -13,7 +13,7 @@ def encrypt(code, string):
 		return poly.encrypt(string)
 	elif code=='keyword':
 		key = Keyword()
-		return key.encrypt(string)
+		return key.encrypt('kryptos', string)
 		
 def decrypt(code, string):
 	if code=='atbash':
@@ -24,7 +24,7 @@ def decrypt(code, string):
 		return poly.decrypt(string)
 	elif code=='keyword':
 		key = Keyword()
-		return key.decrypt(string)
+		return key.decrypt('kryptos', string)
 
 
 print("This is a Secret Messages program. Choose your cipher and encrypt or decrypt your message!\n\n")
@@ -34,10 +34,11 @@ message = input("What message would you like to encrypt or decrypt?\n")
 crypt = input("Excellent. Would you like to encrypt or decrypt?\n").lower()
 
 if crypt=='encrypt':
-	encrypt(code, message)
+	answer = encrypt(code, message)
+	print(answer)
 elif crypt=='decrypt':
-	decrypt(code, message)
-
+	answer = decrypt(code, message)
+	print(answer)
 
 #class crpytography(Cipher):
 

@@ -41,17 +41,15 @@ class Keyword(Cipher):
 	def decrypt(self, keyword, string):
 		clear(decrypt_dict, key_list)
 		key_list[1:1] = list(keyword)
-		for char in alphabet:
-			if char not in key_list:
-				key_list.append(char)
-		i = 0
-		for item in key_list:
-			if i <= 25:
-				decrypt_dict[key_list[i]] = alphabet[i]
-				i += 1
-		ans = ''
-		for letter in string:
-			new_letter = decrypt_dict[letter]
-			ans += new_letter
+		alph = [char for char in alphabet if char not in key_list]
+		key_list.extend(alph)
+		
+		decrypt_dict.update({code_letter: alph_letter for code_letter, alph_letter in zip(key_list, alphabet)})
+		
+		ans_string = [decrypt_dict[char] for char in string]
+		ans = ''.join(ans_string)
+#		for letter in string:
+#			new_letter = decrypt_dict[letter]
+#			ans += new_letter
 		return ans
 		

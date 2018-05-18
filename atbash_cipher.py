@@ -13,10 +13,11 @@ class Atbash(Cipher):
 		pass
 
 	def encrypt(self, string):
-		ans = ''
-		for char in string:
-			new_char = self.backwards[char]
-			ans += new_char
+		ans_string = [self.backwards[char] for char in string]
+		ans = ''.join(ans_string)
+#		for char in string:
+#			new_char = self.backwards[char]
+#			ans += new_char
 		return ans
 
 	def decrypt(self, string):

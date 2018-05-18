@@ -48,8 +48,6 @@ class Keyword(Cipher):
 		
 		ans_string = [decrypt_dict[char] for char in string]
 		ans = ''.join(ans_string)
-#		for letter in string:
-#			new_letter = decrypt_dict[letter]
-#			ans += new_letter
+		
 		return ans
 		

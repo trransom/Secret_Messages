@@ -4,7 +4,7 @@ from atbash_cipher import Atbash
 from polybius_cipher import Polybius
 from keyword_cipher import Keyword
 
-keyword_bool = False
+repeat = True
 keyword = ''
 
 '''
@@ -39,19 +39,26 @@ def decrypt(code, string):
 
 
 print("This is a Secret Messages program. Choose your cipher and encrypt or decrypt your message!\n\n")
-print("These are the current ciphers available:\n\n-Atbash\n-Keyword\n-Polybius\n\n")
-code = input("Which cipher would you like to use?\n").lower()
-if code=='keyword':
-	keyword = input('Which keyword would you like to use? (Keywords without repeating letters work best)\n')
-message = input("What message would you like to encrypt or decrypt?\n")
-crypt = input("Excellent. Would you like to encrypt or decrypt?\n").lower()
 
-if crypt=='encrypt':
-	answer = encrypt(code, message)
-	print(answer)
-elif crypt=='decrypt':
-	answer = decrypt(code, message)
-	print(answer)
+while repeat==True:
+	print("These are the current ciphers available:\n\n-Atbash\n-Keyword\n-Polybius\n\n")
+	code = input("Which cipher would you like to use?\n").lower()
+	if code=='keyword':
+		keyword = input('Which keyword would you like to use? (Keywords without repeating letters work best)\n')
+	message = input("What message would you like to encrypt or decrypt?\n")
+	crypt = input("Excellent. Would you like to encrypt or decrypt?\n").lower()
 
+	if crypt=='encrypt':
+		answer = encrypt(code, message)
+		print('Your encrypted message is:\n' + answer)
+	elif crypt=='decrypt':
+		answer = decrypt(code, message)
+		print('Your decrypted message is:\n' + answer)
+
+	r = input('\nWould you like to encode or decode another message? y\\n\n')
+	if r=='y':
+		repeat = True
+	else:
+		repeat = False
 #class crpytography(Cipher):
 

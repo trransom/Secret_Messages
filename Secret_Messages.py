@@ -3,12 +3,20 @@ from atbash_cipher import Atbash
 from ciphers import Cipher
 from keyword_cipher import Keyword
 from polybius_cipher import Polybius
+import re
+import string
 
 
 repeat = True
 keyword = ''
 code_list = ['atbash', 'keyword', 'polybius']
 
+def numLetters(s):
+	invalidChars = set(string.punctuation)
+	isNum = any(i.isdigit() for i in s)
+	specChar = any(char in invalidChars for char in s)
+	if isNum or specChar:
+		return True
 '''
 	Encrypts the given string depending on whether
 	code is equal to 'atbash', 'polybius', or 'keyword'.
@@ -50,8 +58,21 @@ while repeat==True:
 		code = input("Which cipher would you like to use?\n").lower()
 	if code=='keyword':
 		keyword = input('Which keyword would you like to use? (Keywords without repeating letters work best)\n')
-	message = input("What message would you like to encrypt or decrypt?\n")
+		while numLetters(keyword):
+			print('Please enter a keyword without any digits or special characters')
+			keyword = input('Which cipher would you like to use?\n').lower()
+			
 	crypt = input("Excellent. Would you like to encrypt or decrypt?\n").lower()
+	message = input("What message would you like to {}?\n").format(crypt)
+	if code != 'polybius':
+		while numLetters(message):
+			print('Please enter a message without numbers or special characters.\n')
+			message = input('What message would you like to encrypt or decrypt?\n')
+	elif code=='polybius':
+		if numLetters(message) and crypt != 'decrypt':
+			print('Number messages can only be decrypted.\n')
+			crypt = 'decrypt'
+
 
 	if crypt=='encrypt':
 		answer = encrypt(code, message)

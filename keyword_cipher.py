@@ -4,9 +4,6 @@ import string
 
 alphabet = string.ascii_lowercase
 
-
-
-
 '''
 	Empties the given dictionary and list.
 '''

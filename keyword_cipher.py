@@ -9,6 +9,7 @@ alphabet = string.ascii_lowercase
 '''
 def clear(dictionary, list):
 	dictionary.clear()
+	dictionary[' '] = ' '
 	list.clear()
 	
 '''
@@ -38,14 +39,14 @@ def dencrypt(keyword, string, dictionary, key_list, bool):
 class Keyword(Cipher):
 
 	keyword = 'kryptos'
-	encrypt_dict = {}
-	decrypt_dict = {}
+	encrypt_dict = {' ': ' '}
+	decrypt_dict = {' ': ' '}
 	key_list = []
 	
 	'''
 		Allows the user to initialize the class by passing in their own keyword for the cipher.
 	'''
-	def __init__(self, keyword='kryptos', encrypt_dict={}, decrypt_dict={}, key_list=[]):
+	def __init__(self, keyword='kryptos', encrypt_dict={' ': ' '}, decrypt_dict={' ': ' '}, key_list=[]):
 		self.keyword = keyword
 		self.encrypt_dict = encrypt_dict
 		self.decrypt_dict = decrypt_dict

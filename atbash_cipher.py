@@ -1,7 +1,8 @@
 # Atbash Cipher
-from ciphers import Cipher
 from collections import OrderedDict
 import string
+from ciphers import Cipher
+
 
 class Atbash(Cipher):
 

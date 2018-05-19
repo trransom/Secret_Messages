@@ -63,15 +63,35 @@ while repeat==True:
 			keyword = input('Which cipher would you like to use?\n').lower()
 			
 	crypt = input("Excellent. Would you like to encrypt or decrypt?\n").lower()
-	message = input("What message would you like to {}?\n").format(crypt)
+	message = input("What message would you like to %s?\n" % crypt)
 	if code != 'polybius':
 		while numLetters(message):
 			print('Please enter a message without numbers or special characters.\n')
-			message = input('What message would you like to encrypt or decrypt?\n')
+			message = input('What message would you like to %s?\n' % crypt)
 	elif code=='polybius':
-		if numLetters(message) and crypt != 'decrypt':
-			print('Number messages can only be decrypted.\n')
-			crypt = 'decrypt'
+		if crypt=='encrypt':
+			while numLetters(message):
+				print('Only messages without numbers and special characters can be encrypted')
+				message = input('What message would you like to %s?\n' % crypt)
+		elif crypt=='decrypt':
+			bool = True
+			poly = Polybius()
+			test = message.split(' ')
+			while bool:
+				for item in test:
+					if item.isdigit()==False:
+						print('Only digits between 11 and 56 can be tested.\n')
+						message = input('What message would you like to %s?\n' % crypt)
+						break
+					if int(item) not in poly.num_list:
+						print('Only digits between 11 and 56 can be tested.\n')
+						message = input('What message would you like to %s?\n' % crypt)
+						break
+					elif item == test[-1]:
+						bool = False
+						break
+					else:
+						continue
 
 
 	if crypt=='encrypt':

@@ -1,8 +1,9 @@
 #Secret Messages
-from ciphers import Cipher
 from atbash_cipher import Atbash
-from polybius_cipher import Polybius
+from ciphers import Cipher
 from keyword_cipher import Keyword
+from polybius_cipher import Polybius
+
 
 repeat = True
 keyword = ''
@@ -60,5 +61,3 @@ while repeat==True:
 		repeat = True
 	else:
 		repeat = False
-#class crpytography(Cipher):
-

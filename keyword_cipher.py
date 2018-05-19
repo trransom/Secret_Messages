@@ -28,7 +28,7 @@ def dencrypt(keyword, string, dictionary, key_list, bool):
 		ans = ''.join(ans_string)
 		return ans
 	elif bool==0:
-		dictionary.update({code_letter: alph_letter for code_letter, alph_letter in zip(key_list, alphabet)})
+		dictionary.update({code_letter: alph_letter for code_letter, in zip(key_list, alphabet)})
 		ans_string = [dictionary[char] for char in string]
 		ans = ''.join(ans_string)
 		return ans
@@ -66,4 +66,3 @@ class Keyword(Cipher):
 	def decrypt(self, keyword, string):
 		clear(self.decrypt_dict, self.key_list)
 		return dencrypt(self.keyword, string, self.decrypt_dict, self.key_list, 0)
-		

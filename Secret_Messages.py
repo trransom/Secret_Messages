@@ -26,8 +26,8 @@ def decrypt(code, string):
 		poly = Polybius()
 		return poly.decrypt(string)
 	elif code=='keyword':
-		key = Keyword()
-		return key.decrypt('kryptos', string)
+		key = Keyword(keyword)
+		return key.decrypt(key.keyword, string)
 
 
 print("This is a Secret Messages program. Choose your cipher and encrypt or decrypt your message!\n\n")

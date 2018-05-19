@@ -7,6 +7,7 @@ from polybius_cipher import Polybius
 
 repeat = True
 keyword = ''
+code_list = ['atbash', 'keyword', 'polybius']
 
 '''
 	Encrypts the given string depending on whether
@@ -39,11 +40,14 @@ def decrypt(code, string):
 		return key.decrypt(key.keyword, string)
 
 
-print("This is a Secret Messages program. Choose your cipher and encrypt or decrypt your message!\n\n")
+print('This is a Secret Messages program. Choose your cipher and encrypt or decrypt your message!\n\n')
 
 while repeat==True:
-	print("These are the current ciphers available:\n\n-Atbash\n-Keyword\n-Polybius\n\n")
+	print('These are the current ciphers available:\n\n-Atbash\n-Keyword\n-Polybius\n\n')
 	code = input("Which cipher would you like to use?\n").lower()
+	while code not in code_list:
+		print(code + ' is not an available cipher. Please try again.')
+		code = input("Which cipher would you like to use?\n").lower()
 	if code=='keyword':
 		keyword = input('Which keyword would you like to use? (Keywords without repeating letters work best)\n')
 	message = input("What message would you like to encrypt or decrypt?\n")

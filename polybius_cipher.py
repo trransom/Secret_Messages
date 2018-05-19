@@ -20,6 +20,10 @@ r_poly_dict = {'11': 'a', '12': 'b', '13': 'c', '14': 'd', '15': 'e',
 class Polybius(Cipher):
 	num_list = [11, 12, 13, 14, 15, 21, 22, 23, 24, 25, 31, 32, 33, 34, 35, 41, 42, 43, 44, 45, 51, 52, 53, 54, 55]
 		
+	'''
+		Encrypts the given string by turning it to lowercase and then running it against
+		the poly_dict dictionary.
+	'''
 	def encrypt(self, string):
 		ans = ''
 		s = string.lower()
@@ -28,6 +32,10 @@ class Polybius(Cipher):
 			ans += str(new_char) + ' '
 		return ans
 	
+	'''
+		Decrypts the given string by splitting it on spaces and then running it against
+		the r_poly_dict dictionary.
+	'''
 	def decrypt(self, string):
 		ans = ''
 		code = string.split(' ')

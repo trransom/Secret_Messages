@@ -7,6 +7,10 @@ from keyword_cipher import Keyword
 keyword_bool = False
 keyword = ''
 
+'''
+	Encrypts the given string depending on whether
+	code is equal to 'atbash', 'polybius', or 'keyword'.
+'''
 def encrypt(code, string):
 	if code=='atbash':
 		atbash = Atbash()
@@ -18,6 +22,10 @@ def encrypt(code, string):
 		key = Keyword(keyword)
 		return key.encrypt(key.keyword, string)
 		
+'''
+	Decrypts the given string depending on whether
+	code is equal to 'atbash', 'polybius', or 'keyword'.
+'''
 def decrypt(code, string):
 	if code=='atbash':
 		atbash = Atbash()

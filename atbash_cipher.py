@@ -9,8 +9,10 @@ class Atbash(Cipher):
 	forwards = OrderedDict(zip(string.ascii_lowercase, string.ascii_lowercase[::-1]))
 	backwards = OrderedDict(zip(string.ascii_lowercase[::-1], string.ascii_lowercase))
 
-	def __init__(self):
-		pass
+	def __init__(self, forwards=OrderedDict(zip(string.ascii_lowercase, string.ascii_lowercase[::-1])),
+				backwards=OrderedDict(zip(string.ascii_lowercase[::-1], string.ascii_lowercase))):
+		self.forwards = forwards
+		self.backwards = backwards
 
 	def encrypt(self, string):
 		ans_string = [self.backwards[char] for char in string]

@@ -26,7 +26,6 @@ class Polybius(Cipher):
 		for char in s:
 			new_char = poly_dict[char]
 			ans += str(new_char) + ' '
-			ans = ans[:-1]
 		return ans
 	
 	def decrypt(self, string):

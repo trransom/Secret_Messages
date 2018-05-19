@@ -9,7 +9,6 @@ alphabet = string.ascii_lowercase
 '''
 def clear(dictionary, list):
 	dictionary.clear()
-#	dictionary[' '] = ' '
 	list.clear()
 	
 '''
@@ -62,8 +61,8 @@ class Keyword(Cipher):
 		return dencrypt(self.keyword, string, self.encrypt_dict, self.key_list, 1)
 		
 	'''
-		Encrypts the given string by calling 'dencrypt' with a boolean value of 1
-		and by passing in the encrypt_dict as the dictionary argument.
+		Encrypts the given string by calling 'dencrypt' with a boolean value of 0
+		and by passing in the decrypt_dict as the dictionary argument.
 	'''
 	def decrypt(self, keyword, string):
 		clear(self.decrypt_dict, self.key_list)

@@ -9,7 +9,7 @@ alphabet = string.ascii_lowercase
 '''
 def clear(dictionary, list):
 	dictionary.clear()
-	dictionary[' '] = ' '
+#	dictionary[' '] = ' '
 	list.clear()
 	
 '''
@@ -29,7 +29,7 @@ def dencrypt(keyword, string, dictionary, key_list, bool):
 		ans = ''.join(ans_string)
 		return ans
 	elif bool==0:
-		dictionary.update({code_letter: alph_letter for code_letter, in zip(key_list, alphabet)})
+		dictionary.update({code_letter: alph_letter for code_letter, alph_letter in zip(key_list, alphabet)})
 		ans_string = [dictionary[char] for char in string]
 		ans = ''.join(ans_string)
 		return ans
@@ -58,6 +58,7 @@ class Keyword(Cipher):
 	'''
 	def encrypt(self, keyword, string):
 		clear(self.encrypt_dict, self.key_list)
+		self.encrypt_dict[' '] = ' '
 		return dencrypt(self.keyword, string, self.encrypt_dict, self.key_list, 1)
 		
 	'''
@@ -66,4 +67,5 @@ class Keyword(Cipher):
 	'''
 	def decrypt(self, keyword, string):
 		clear(self.decrypt_dict, self.key_list)
+		self.decrypt_dict[' '] = ' '
 		return dencrypt(self.keyword, string, self.decrypt_dict, self.key_list, 0)

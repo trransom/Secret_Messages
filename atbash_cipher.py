@@ -21,6 +21,7 @@ class Atbash(Cipher):
 		Encrypts the given string by running it against the backwards dictionary.
 	'''
 	def encrypt(self, string):
+		self.backwards[' '] = ' '
 		ans_string = [self.backwards[char] for char in string]
 		ans = ''.join(ans_string)
 		return ans
@@ -29,6 +30,7 @@ class Atbash(Cipher):
 		Decrypts the given string by running it against the forwards dictionary.
 	'''
 	def decrypt(self, string):
+		self.forwards[' '] = ' '
 		ans_string = [self.forwards[char] for char in string]
 		ans = ''.join(ans_string)
 		return ans

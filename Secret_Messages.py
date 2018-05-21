@@ -62,11 +62,7 @@ def main():
 	print('This is a Secret Messages program. Choose your cipher and encrypt or decrypt your message!\n\n')
 	
 	while repeat==True:
-		print('These are the current ciphers available:\n\n-Atbash\n-Keyword\n-Polybius\n\n')
-		code = input("Which cipher would you like to use?\n").lower()
-		while code not in code_list:
-			print(code + ' is not an available cipher. Please try again.')
-			code = input("Which cipher would you like to use?\n").lower()
+		code = intro()
 		if code=='keyword':
 			keyword = input('Which keyword would you like to use? (Keywords without repeating letters work best)\n')
 			while numLetters(keyword):

@@ -8,14 +8,6 @@ import string
 
 
 keyword = ''
-code_list = ['atbash', 'keyword', 'polybius']
-def intro():
-	print('These are the current ciphers available:\n\n-Atbash\n-Keyword\n-Polybius\n\n')
-	code = input("Which cipher would you like to use?\n").lower()
-	while code not in code_list:
-		print(code + ' is not an available cipher. Please try again.')
-		code = input("Which cipher would you like to use?\n").lower()
-	return code
 
 def numLetters(s):
 	invalidChars = set(string.punctuation)
@@ -57,17 +49,22 @@ def decrypt(code, string):
 def main():
 	
 	repeat = True
-	
+	code_list = ['atbash', 'keyword', 'polybius']
 	
 	print('This is a Secret Messages program. Choose your cipher and encrypt or decrypt your message!\n\n')
 	
 	while repeat==True:
-		code = intro()
+		print('These are the current ciphers available:\n\n-Atbash\n-Keyword\n-Polybius\n\n')
+		code = input("Which cipher would you like to use?\n").lower()
+		while code not in code_list:
+			print(code + ' is not an available cipher. Please try again.')
+			code = input("Which cipher would you like to use?\n").lower()
 		if code=='keyword':
 			keyword = input('Which keyword would you like to use? (Keywords without repeating letters work best)\n')
 			while numLetters(keyword):
 				print('Please enter a keyword without any digits or special characters')
 				keyword = input('Which cipher would you like to use?\n').lower()
+				
 		crypt = input("Excellent. Would you like to encrypt or decrypt?\n").lower()
 		message = input("What message would you like to %s?\n" % crypt)
 		if code != 'polybius':
@@ -101,7 +98,6 @@ def main():
 
 
 		if crypt=='encrypt':
-			print(code + ', ' + message)
 			answer = encrypt(code, message)
 			print('Your encrypted message is:\n' + answer)
 		elif crypt=='decrypt':

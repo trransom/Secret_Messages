@@ -39,18 +39,23 @@ def polybius(crypt_arg, message):
 		bool = True
 		poly = Polybius()
 		test = message.split(' ')
+		#Loops continually, reseting the 'test' string until correct input is given.
 		while bool:
 			for item in test:
+				#If the item in test isn't a digit, prompt for new input.
 				if item.isdigit()==False:
 					print('Only digits between 11 and 56 can be tested with a single space between every number.\n')
 					message = input('What message would you like to %s?\n' % crypt_arg)
 					test = message.split(' ')
 					continue
+				#If the item in test isn't in num_list, prompt for new input.
 				if int(item) not in poly.num_list:
 					print('Only digits between 11 and 56 can be tested with a single space between every number.\n')
 					message = input('What message would you like to %s?\n' % crypt_arg)
 					test = message.split(' ')
 					break
+				#If you've passed both tests and are at the end of the list,
+				#you've reached the end of the message without errors. 
 				elif item == test[-1]:
 					bool = False
 					continue
@@ -104,14 +109,21 @@ print('This is a Secret Messages program. Choose your cipher and encrypt or decr
 
 while repeat==True:
 	code = begin()
+	
+	#input the keyword if cipher is Keyword
 	if code=='keyword':
 		keyword = input('Which keyword would you like to use? (Keywords without repeating letters work best)\n')
 		while numLetters(keyword):
 			print('Please enter a keyword without any digits or special characters')
 			keyword = input('Which cipher would you like to use?\n').lower()
+			
+	#Prompt for 'encrypt' or 'decrypt'. Continue to prompt until either answers have been given.
 	crypt = input("Excellent. Would you like to encrypt or decrypt?\n").lower()
 	while crypt != 'encrypt' and crypt != 'decrypt':
 		crypt = input('Please enter either \'encrypt\' or \'decrypt\'\n')
+		
+	#Prompt for message. If the cipher is Polybius, run the polybius() function
+	#to solve for possible logic errors associated with the Polybius cipher.
 	message = input("What message would you like to %s?\n" % crypt)
 	if code != 'polybius':
 		while numLetters(message):
@@ -120,7 +132,7 @@ while repeat==True:
 	elif code=='polybius':
 		message = polybius(crypt, message)
 
-
+	#Call encrypt or decrypt with the correct cipher and the message for encoding/decoding.
 	if crypt=='encrypt':
 		answer = encrypt(code, message)
 		print('Your encrypted message is:\n' + answer)
@@ -128,6 +140,7 @@ while repeat==True:
 		answer = decrypt(code, message)
 		print('Your decrypted message is:\n' + answer)
 
+	#Continue or discontinue the program depending on the input from the user.
 	r = input('\nWould you like to encode or decode another message? y\\n\n')
 	if r=='y':
 		repeat = True

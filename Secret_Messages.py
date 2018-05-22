@@ -20,7 +20,7 @@ def begin():
 	
 	return code
 
-def polybius(crypt_arg):
+def polybius(crypt_arg, message):
 	if crypt_arg=='encrypt':
 		while numLetters(message):
 			print('Only messages without numbers and special characters can be encrypted')
@@ -44,13 +44,19 @@ def polybius(crypt_arg):
 					break
 				else:
 					continue
+	return message
 
+'''
+	Returns true if the string contains any numbers 
+	or special characters.
+'''
 def numLetters(s):
 	invalidChars = set(string.punctuation)
 	isNum = any(i.isdigit() for i in s)
 	specChar = any(char in invalidChars for char in s)
 	if isNum or specChar:
 		return True
+		
 '''
 	Encrypts the given string depending on whether
 	code is equal to 'atbash', 'polybius', or 'keyword'.
@@ -98,7 +104,7 @@ while repeat==True:
 			print('Please enter a message without numbers or special characters.\n')
 			message = input('What message would you like to %s?\n' % crypt)
 	elif code=='polybius':
-		polybius(crypt)
+		message = polybius(crypt, message)
 
 
 	if crypt=='encrypt':

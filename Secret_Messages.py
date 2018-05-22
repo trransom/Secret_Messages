@@ -3,7 +3,6 @@ from atbash_cipher import Atbash
 from ciphers import Cipher
 from keyword_cipher import Keyword
 from polybius_cipher import Polybius
-import re
 import string
 
 
@@ -11,6 +10,11 @@ repeat = True
 keyword = ''
 code_list = ['atbash', 'keyword', 'polybius']
 
+'''
+	Prints the available ciphers and takes input from the user.
+	If the requested cipher is not in the list, the function continues
+	to prompt the user.
+'''
 def begin():
 	print('These are the current ciphers available:\n\n-Atbash\n-Keyword\n-Polybius\n\n')
 	code = input("Which cipher would you like to use?\n").lower()
@@ -20,6 +24,12 @@ def begin():
 	
 	return code
 
+'''
+	If polybius is entered as the encryption, the main body of 
+	the script calls this function to handle the possible error 
+	logic of asking the user for correct input associated with the
+	polybius cipher.
+'''
 def polybius(crypt_arg, message):
 	if crypt_arg=='encrypt':
 		while numLetters(message):
@@ -32,16 +42,18 @@ def polybius(crypt_arg, message):
 		while bool:
 			for item in test:
 				if item.isdigit()==False:
-					print('Only digits between 11 and 56 can be tested.\n')
+					print('Only digits between 11 and 56 can be tested with a single space between every number.\n')
 					message = input('What message would you like to %s?\n' % crypt_arg)
-					break
+					test = message.split(' ')
+					continue
 				if int(item) not in poly.num_list:
-					print('Only digits between 11 and 56 can be tested.\n')
+					print('Only digits between 11 and 56 can be tested with a single space between every number.\n')
 					message = input('What message would you like to %s?\n' % crypt_arg)
+					test = message.split(' ')
 					break
 				elif item == test[-1]:
 					bool = False
-					break
+					continue
 				else:
 					continue
 	return message
@@ -98,6 +110,8 @@ while repeat==True:
 			print('Please enter a keyword without any digits or special characters')
 			keyword = input('Which cipher would you like to use?\n').lower()
 	crypt = input("Excellent. Would you like to encrypt or decrypt?\n").lower()
+	while crypt != 'encrypt' and crypt != 'decrypt':
+		crypt = input('Please enter either \'encrypt\' or \'decrypt\'\n')
 	message = input("What message would you like to %s?\n" % crypt)
 	if code != 'polybius':
 		while numLetters(message):

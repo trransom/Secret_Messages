@@ -28,18 +28,20 @@ class Polybius(Cipher):
 		51, 52, 53, 54, 55, 56
 		]
 		
+	def __init__(self):
+		super().__init__('placeholder', poly_dict, r_poly_dict)
+		
 	'''
 		Encrypts the given string by turning it to lowercase and then running it against
 		the poly_dict dictionary.
 	'''
-	def encrypt(self, string):
-		ans = ''
-		s = string.lower()#.replace(' ', '')
-#		s.replace(" ", "")
-		for char in s:
-			new_char = poly_dict[char]
-			ans += str(new_char) + ' '
-		return ans
+#	def encrypt(self, string):
+#		ans = ''
+#		s = string.lower
+#		for char in s:
+#			new_char = poly_dict[char]
+#			ans += str(new_char) + ' '
+#		return ans
 	
 	'''
 		Decrypts the given string by splitting it on spaces and then running it against

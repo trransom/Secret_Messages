@@ -14,8 +14,10 @@ class Cipher():
 		specify their own alphabet that gets run against
 		the regular alphabet.
 	'''
-	def __init__(self, crypt_alphabet, encrypt_dict, decrypt_dict):
-		self.message = message
+	def __init__(
+				self, crypt_alphabet='enhgtwmbcdsojlfkzqyruviaxp ', 
+				encrypt_dict=OrderedDict(zip(alphabet, crypt_alphabet)), 
+				decrypt_dict=OrderedDict(zip(crypt_alphabet, alphabet))):
 		self.crypt_alphabet = crypt_alphabet
 		self.encrypt_dict = encrypt_dict
 		self.decrypt_dict = decrypt_dict
@@ -26,7 +28,7 @@ class Cipher():
 	def encrypt(self, message):
 		ans = ''
 		for char in message:
-			ans += encrypt_dict[char]
+			ans += str(self.encrypt_dict[char])
 		return ans
 
 	'''
@@ -35,6 +37,6 @@ class Cipher():
 	def decrypt(self, message):
 		ans = ''
 		for char in message:
-			ans += decrypt_dict[char]
+			ans += self.decrypt_dict[char]
 		return ans
 		

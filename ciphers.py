@@ -2,10 +2,10 @@
 from collections import OrderedDict
 import string
 
-class Cipher
+class Cipher():
 
-	alphabet = string.ascii_lowercase
-	crypt_alphabet = 'enhgtwmbcdsojlfkzqyruviaxp'
+	alphabet = string.ascii_lowercase + ' '
+	crypt_alphabet = 'enhgtwmbcdsojlfkzqyruviaxp '
 	encrypt_dict = OrderedDict(zip(alphabet, crypt_alphabet))
 	decrypt_dict = OrderedDict(zip(crypt_alphabet, alphabet))
 	

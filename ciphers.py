@@ -14,9 +14,11 @@ class Cipher():
 		specify their own alphabet that gets run against
 		the regular alphabet.
 	'''
-	def __init__(self, crypt_alphabet):
+	def __init__(self, crypt_alphabet, encrypt_dict, decrypt_dict):
 		self.message = message
 		self.crypt_alphabet = crypt_alphabet
+		self.encrypt_dict = encrypt_dict
+		self.decrypt_dict = decrypt_dict
 		
 	'''
 		Encrypts a message

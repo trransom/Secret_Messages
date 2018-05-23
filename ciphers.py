@@ -4,7 +4,7 @@ import string
 
 class Cipher():
 
-	alphabet = string.ascii_lowercase + ' '
+	alphabet = string.ascii_lowercase
 	crypt_alphabet = 'enhgtwmbcdsojlfkzqyruviaxp '
 	encrypt_dict = OrderedDict(zip(alphabet, crypt_alphabet))
 	decrypt_dict = OrderedDict(zip(crypt_alphabet, alphabet))
@@ -15,7 +15,8 @@ class Cipher():
 		the regular alphabet.
 	'''
 	def __init__(
-				self, crypt_alphabet='enhgtwmbcdsojlfkzqyruviaxp ', 
+				self,
+				crypt_alphabet='enhgtwmbcdsojlfkzqyruviaxp ', 
 				encrypt_dict=OrderedDict(zip(alphabet, crypt_alphabet)), 
 				decrypt_dict=OrderedDict(zip(crypt_alphabet, alphabet))):
 		self.crypt_alphabet = crypt_alphabet

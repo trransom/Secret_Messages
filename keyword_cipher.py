@@ -15,6 +15,10 @@ def clear(dictionary, list):
 	Encrypts or decrypts the passed in string depending on the boolean value given.
 '''
 def dencrypt(keyword, string, dictionary, key_list, bool):
+
+	clear(dictionary, key_list)
+	dictionary[' '] = ' '
+
 	#Add the new keyword to the key list
 	key_list[1:1] = list(keyword)
 	
@@ -56,8 +60,6 @@ class Keyword(Cipher):
 		and by passing in the encrypt_dict as the dictionary argument.
 	'''
 	def encrypt(self, keyword, string):
-		clear(self.encrypt_dict, self.key_list)
-		self.encrypt_dict[' '] = ' '
 		return dencrypt(self.keyword, string, self.encrypt_dict, self.key_list, 1)
 		
 	'''
@@ -65,6 +67,4 @@ class Keyword(Cipher):
 		and by passing in the decrypt_dict as the dictionary argument.
 	'''
 	def decrypt(self, keyword, string):
-		clear(self.decrypt_dict, self.key_list)
-		self.decrypt_dict[' '] = ' '
 		return dencrypt(self.keyword, string, self.decrypt_dict, self.key_list, 0)

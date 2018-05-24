@@ -87,7 +87,7 @@ def encrypt(code, string):
 		return poly.encrypt(string)
 	elif code=='keyword':
 		key = Keyword(keyword)
-		return key.encrypt(key.keyword, string)
+		return key.encrypt(string)
 		
 '''
 	Decrypts the given string depending on whether
@@ -102,7 +102,7 @@ def decrypt(code, string):
 		return poly.decrypt(string)
 	elif code=='keyword':
 		key = Keyword(keyword)
-		return key.decrypt(key.keyword, string)
+		return key.decrypt(string)
 
 
 print('This is a Secret Messages program. Choose your cipher and encrypt or decrypt your message!\n\n')
@@ -115,7 +115,7 @@ while repeat==True:
 		keyword = input('Which keyword would you like to use? (Keywords without repeating letters work best)\n')
 		while numLetters(keyword):
 			print('Please enter a keyword without any digits or special characters')
-			keyword = input('Which cipher would you like to use?\n').lower()
+			keyword = input('Which keyword would you like to use?\n').lower()
 			
 	#Prompt for 'encrypt' or 'decrypt'. Continue to prompt until either answers have been given.
 	crypt = input("Excellent. Would you like to encrypt or decrypt?\n").lower()

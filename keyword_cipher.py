@@ -54,7 +54,7 @@ class Keyword(Cipher):
 		self.start_dict = start_dict
 		self.encrypt_dict = dencrypt(self.keyword, self.start_dict, self.key_list, 1)
 		self.decrypt_dict = dencrypt(self.keyword, self.start_dict, self.key_list, 0)
-		super().__init__('placeholder', self.encrypt_dict, self.decrypt_dict)
+		super().__init__(self.encrypt_dict, self.decrypt_dict)
 		
 	'''
 		Encrypts the given string by calling 'dencrypt' with a boolean value of 1

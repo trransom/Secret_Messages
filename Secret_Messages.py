@@ -10,12 +10,14 @@ repeat = True
 keyword = ''
 code_list = ['atbash', 'keyword', 'polybius']
 
-'''
+
+def begin():
+	'''
 	Prints the available ciphers and takes input from the user.
+	
 	If the requested cipher is not in the list, the function continues
 	to prompt the user.
-'''
-def begin():
+	'''
 	print('These are the current ciphers available:\n\n-Atbash\n-Keyword\n-Polybius\n\n')
 	code = input("Which cipher would you like to use?\n").lower()
 	while code not in code_list:
@@ -24,13 +26,14 @@ def begin():
 	
 	return code
 
-'''
-	If polybius is entered as the encryption, the main body of 
-	the script calls this function to handle the possible error 
-	logic of asking the user for correct input associated with the
-	polybius cipher.
-'''
+
 def polybius(crypt_arg, message):
+	'''
+	Handles the possible error logic of asking the user for correct 
+	input associated with the polybius cipher.
+	
+	Called if 'polybius' is entered as the encryption input.
+	'''
 	if crypt_arg=='encrypt':
 		while numLetters(message):
 			print('Only messages without numbers and special characters can be encrypted')
@@ -63,22 +66,24 @@ def polybius(crypt_arg, message):
 					continue
 	return message
 
-'''
+
+def numLetters(s):
+	'''
 	Returns true if the string contains any numbers 
 	or special characters.
-'''
-def numLetters(s):
+	'''
 	invalidChars = set(string.punctuation)
 	isNum = any(i.isdigit() for i in s)
 	specChar = any(char in invalidChars for char in s)
 	if isNum or specChar:
 		return True
 		
-'''
+
+def encrypt(code, string):
+	'''
 	Encrypts the given string depending on whether
 	code is equal to 'atbash', 'polybius', or 'keyword'.
-'''
-def encrypt(code, string):
+	'''
 	if code=='atbash':
 		atbash = Atbash()
 		return atbash.encrypt(string)
@@ -89,11 +94,12 @@ def encrypt(code, string):
 		key = Keyword(keyword)
 		return key.encrypt(string)
 		
-'''
+
+def decrypt(code, string):
+	'''
 	Decrypts the given string depending on whether
 	code is equal to 'atbash', 'polybius', or 'keyword'.
-'''
-def decrypt(code, string):
+	'''
 	if code=='atbash':
 		atbash = Atbash()
 		return atbash.decrypt(string)
@@ -104,9 +110,8 @@ def decrypt(code, string):
 		key = Keyword(keyword)
 		return key.decrypt(string)
 
-
+#Program instructions to display menu and retrieve user input.
 print('This is a Secret Messages program. Choose your cipher and encrypt or decrypt your message!\n\n')
-
 while repeat==True:
 	code = begin()
 	

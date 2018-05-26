@@ -35,13 +35,16 @@ class Polybius(Cipher):
 		Encrypts the given string by turning it to lowercase and then running it against
 		the poly_dict dictionary.
 	'''
-#	def encrypt(self, string):
+	def encrypt(self, string):
+		answer = super().encrypt(string)
+		itr = iter(answer)
+		ans = ' '.join(a+b for a,b in zip(itr, itr))
 #		ans = ''
 #		s = string.lower
 #		for char in s:
 #			new_char = poly_dict[char]
 #			ans += str(new_char) + ' '
-#		return ans
+		return ans
 	
 	'''
 		Decrypts the given string by splitting it on spaces and then running it against

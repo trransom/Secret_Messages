@@ -6,9 +6,10 @@ from ciphers import Cipher
 
 class Atbash(Cipher):
 	
-	alph = string.ascii_lowercase + ' '
-	forwards = OrderedDict(zip(alph, alph[::-1]))
-	backwards = OrderedDict(zip(alph[::-1], alph))
+	alph1 = string.ascii_lowercase + ' '
+	alph2 = string.ascii_lowercase[::-1] + ' '
+	forwards = OrderedDict(zip(alph1, alph2))
+	backwards = OrderedDict(zip(alph2, alph1))
 
 	'''
 		Allows the user to initialize the class by creating their own forwards and backwards dictionaries.

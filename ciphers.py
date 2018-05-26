@@ -27,7 +27,8 @@ class Cipher():
 	def encrypt(self, message):
 		'''Encrypts a message.'''
 		ans = ''
-		for char in message:
+		mssg = message.lower()
+		for char in mssg:
 			ans += str(self.encrypt_dict[char])
 		return ans
 
@@ -35,7 +36,8 @@ class Cipher():
 	def decrypt(self, message):
 		'''Decrypts a message.'''
 		ans = ''
-		for char in message:
+		mssg = message.lower()
+		for char in mssg:
 			ans += self.decrypt_dict[char]
 		return ans
 		
